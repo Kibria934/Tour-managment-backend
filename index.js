@@ -7,7 +7,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const colors = require("colors");
 const { errorHandler } = require("./utils/errorHandler");
-const tourRouter = require("./routes/tour.router");
+const tourRouter = require("./routes/tours.router");
+const LogicalRouter = require("./routes/tour.router");
 
 // Middleware
 app.use(cors());
@@ -18,6 +19,7 @@ dbConnect();
 
 // Routers
 app.use("/tours", tourRouter);
+app.use("/tour", LogicalRouter);
 
 // Error handlers
 app.use(errorHandler);

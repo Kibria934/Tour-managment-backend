@@ -6,6 +6,7 @@ const packagesSchema = mongoose.Schema(
       type: String,
       required: [true, "Please provide name for this package"],
       trim: true,
+      uniq: true,
       minLength: [3, "Name must be greater than 3 character"],
       maxLength: [200, "Name is too long"],
     },
@@ -50,6 +51,10 @@ const packagesSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+packagesSchema.method.logger = function () {
+  console.log("this is logger");
+};
 
 const Packages = mongoose.model("packages", packagesSchema);
 module.exports = Packages;

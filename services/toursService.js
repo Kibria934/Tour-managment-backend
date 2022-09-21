@@ -18,10 +18,6 @@ module.exports.createTourPackagesService = async (data) => {
 };
 
 module.exports.detailsOfTour = async (id) => {
-  const count = await Packages.findById(id).
-  const result = await Packages.findByIdAndUpdate(id, {
-    $set: { viewCount: 1 },
-  });
-  // viewCount = viewCount + 1;
+  const result = await Packages.findById(id);
   return result;
 };

@@ -4,7 +4,7 @@ const {
   getTourPackages,
   createTourPackagesService,
   detailsOfTour,
-} = require("../services/tourService");
+} = require("../services/toursService");
 
 // ------------- Getting all tours packages ---------------
 module.exports.getTour = async (req, res, next) => {
@@ -73,14 +73,11 @@ module.exports.createTourPackages = async (req, res, next) => {
 // ----------------------------- Gat a tour details by Id -------------------
 module.exports.getATourDetails = async (req, res, next) => {
   try {
-    // const ObjectId = require("mongoose").Types.ObjectId;
     const { id } = req.params;
     const valid = mongoose.Types.ObjectId.isValid(id);
-    let viewCount = 0;
 
     if (valid) {
       const result = await detailsOfTour(id);
-      console.log(result.viewCount);
 
       result
         ? res.status(200).send({

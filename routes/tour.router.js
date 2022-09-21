@@ -1,10 +1,13 @@
 const express = require("express");
-const tours = require("../controllers/tour.controller");
-const viewCount = require("../middleware/viewCount");
+const {
+  trending,
+  cheapest,
+  updateTour,
+} = require("../controllers/logicalTour.controller");
 const router = express.Router();
 
-router.route("/").get(tours.getTour).post(tours.createTourPackages);
-
-router.route("/:id").get(tours.getATourDetails);
+router.route("/trending").get(trending);
+router.route("/cheapest").get(cheapest);
+router.route("/:id").patch(updateTour);
 
 module.exports = router;
